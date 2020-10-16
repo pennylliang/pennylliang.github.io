@@ -1,0 +1,112 @@
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-weight: $font-weight-light;
+}
+
+.wrapper {
+  position: relative;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 200px;
+  background: $white-color;
+  box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+  background-color: $sidebar-bg;
+
+  .sidebar-wrapper{
+    height: 100%;
+    overflow: auto;
+  }
+
+  .nav {
+    margin-top: 20px;
+    padding-left: 0;
+    margin-bottom: 0;
+    display: block;
+    list-style: none;
+
+
+    li {
+        > a{
+          margin: 10px 15px 0;
+
+          &:hover,
+          &:focus{
+              background-color: transparent;
+              outline: none;
+          }
+        }
+
+
+        &:hover > a,
+        & .dropdown-menu a:hover,
+        & .dropdown-menu a:focus,
+        &.active > [data-toggle="collapse"]{
+            background-color: rgba(200, 200, 200, 0.2);
+            color: $black-color;
+            box-shadow: none;
+        }
+
+        &.active > [data-toggle="collapse"]{
+            i{
+                color: #a9afbb;
+            }
+        }
+
+        &.active > a,
+        &.active > a i{
+            color: $white-color;
+        }
+
+        &.separator{
+            margin: 15px 0;
+
+            &:after{
+                width: calc(100% - 30px);
+                content: "";
+                position: absolute;
+                height: 1px;
+                left: 15px;
+                background-color: rgba(180,180,180, .3);
+            }
+
+            & + li {
+                margin-top: 31px;
+            }
+        }
+    }
+
+    .nav-link {
+      display: block;
+      padding: .3rem .8rem;
+      text-decoration: none !important;
+      border-radius: 3px;
+      color: $black-color;
+    }
+
+    p{
+        margin: 0;
+        line-height: 30px;
+        font-size: 14px;
+        position: relative;
+        display: block;
+        height: auto;
+        white-space: nowrap;
+    }
+  }
+
+  &[data-color="purple"] {
+    @include set-background-color-button($brand-primary);
+  }
+}
