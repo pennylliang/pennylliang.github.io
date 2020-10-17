@@ -1,0 +1,7 @@
+@import "variables";
+@import "mixins";
+@import "effects/hover";
+
+.#{$nameSpace}-grow {
+  @include grow();
+}
