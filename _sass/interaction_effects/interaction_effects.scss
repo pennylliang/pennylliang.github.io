@@ -5,3 +5,7 @@
 .#{$nameSpace}-grow {
   @include grow();
 }
+
+.#{$nameSpace}-ripple {
+  @include ripple();
+}
