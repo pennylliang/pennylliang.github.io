@@ -1,0 +1,48 @@
+
+@mixin ripple {
+  @include optimize();
+
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  @include prefixed(animation-name, #{$nameSpace}-ripple);
+  @include prefixed(animation-duration, 600ms);
+  @include prefixed(animation-timing-function, linear);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+@include keyframes(#{$nameSpace}-ripple) {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@mixin ripple-out {
+	$outerBorderWidth: 6px;
+	$innerBorderWidth: 6px;
+
+	@include optimize();
+	position: absolute;
+
+  border: $primaryColor $outerBorderWidth solid;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include prefixed(animation-name, #{$nameSpace}-ripple-out);
+  @include prefixed(animation-duration, 600ms);
+}
+
+
+@include keyframes(#{$nameSpace}-ripple-out) {
+	100% {
+		top: -(6px + 6px);
+		right: -(6px + 6px);
+		bottom: -(6px + 6px);
+		left: -(6px + 6px);
+		opacity: 0;
+	}
+}

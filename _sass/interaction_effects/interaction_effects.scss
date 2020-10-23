@@ -1,11 +1,12 @@
 @import "variables";
 @import "mixins";
-@import "effects/hover";
+@import "effects/ripple";
 
-.#{$nameSpace}-grow {
-  @include grow();
-}
 
 .#{$nameSpace}-ripple {
   @include ripple();
+}
+
+.#{$nameSpace}-ripple-out {
+  @include ripple-out();
 }

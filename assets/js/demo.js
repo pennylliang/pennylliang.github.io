@@ -1,4 +1,4 @@
-const classPrefix = 'interE-';
+const classPrefix = 'interE';
 
 function createRipple(event) {
   console.log(event);
@@ -11,9 +11,9 @@ function createRipple(event) {
   circle.style.width = circle.style.height = `${diameter}px`;
   circle.style.left = `${event.offsetX - radius}px`;
   circle.style.top = `${event.offsetY - radius}px`;
-  circle.classList.add(`${classPrefix}ripple`);
+  circle.classList.add(`${classPrefix}-ripple`);
 
-  const ripple = button.getElementsByClassName(`${classPrefix}ripple`)[0];
+  const ripple = button.getElementsByClassName(`${classPrefix}-ripple`)[0];
 
   if (ripple) {
     ripple.remove();
@@ -21,9 +21,21 @@ function createRipple(event) {
   button.appendChild(circle);
 }
 
+function createRippleOut(event) {
+  const ripple = document.createElement('span');
+  ripple.classList.add(`${classPrefix}-ripple-out`);
+
+  const rippleOld = event.currentTarget.getElementsByClassName(`${classPrefix}-ripple-out`)[0];
+
+  if (rippleOld) {
+    rippleOld.remove();
+  }
+  event.currentTarget.appendChild(ripple);
+}
+
 onloadAction = function() {
-  const rippleItem = document.getElementById('rippleDemoItem');
-  rippleItem.addEventListener('click', createRipple);
+  document.getElementById('rippleDemoItem').addEventListener('click', createRipple);
+  document.getElementById('rippleOutDemoItem').addEventListener('click', createRippleOut);
 }
 
 if(window.attachEvent) {
