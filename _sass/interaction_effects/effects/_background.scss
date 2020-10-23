@@ -1,0 +1,52 @@
+@mixin bounce-to-right {
+	@include optimize();
+  position: absolute;
+  //z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  @include prefixed(transform, scaleX(0));
+  @include prefixed(transform-origin, 0 50%);
+  @include prefixed(animation-name, #{$nameSpace}-bounce-to-right);
+  @include prefixed(animation-duration, 600ms);
+  @include prefixed(animation-timing-function, ease-out);
+}
+
+@include keyframes(#{$nameSpace}-bounce-to-right) {
+  50% {
+    @include prefixed(transform, scaleX(1));
+    @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+  100% {
+    @include prefixed(transform, scaleX(0));
+		@include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+}
+
+@mixin bounce-to-bottom {
+	@include optimize();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  @include prefixed(transform, scaleY(0));
+  @include prefixed(transform-origin, 50% 0);
+  @include prefixed(animation-name, #{$nameSpace}-bounce-to-bottom);
+  @include prefixed(animation-duration, 600ms);
+  @include prefixed(animation-timing-function, ease-out);
+}
+
+@include keyframes(#{$nameSpace}-bounce-to-bottom) {
+  50% {
+    @include prefixed(transform, scaleY(1));
+    @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+  100% {
+    @include prefixed(transform, scaleY(0));
+		@include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+}

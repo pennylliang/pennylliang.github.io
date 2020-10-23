@@ -21,21 +21,27 @@ function createRipple(event) {
   button.appendChild(circle);
 }
 
-function createRippleOut(event) {
-  const ripple = document.createElement('span');
-  ripple.classList.add(`${classPrefix}-ripple-out`);
+function addDemoEventListener(boxId, styleName, customize) {
+  this.defaultAction = (event) => {
+    const span = document.createElement('span');
+    span.classList.add(styleName);
 
-  const rippleOld = event.currentTarget.getElementsByClassName(`${classPrefix}-ripple-out`)[0];
+    const spanOld = event.currentTarget.getElementsByClassName(styleName)[0];
 
-  if (rippleOld) {
-    rippleOld.remove();
+    if (spanOld) {
+      spanOld.remove();
+    }
+    event.currentTarget.appendChild(span);
   }
-  event.currentTarget.appendChild(ripple);
+  document.getElementById(boxId).addEventListener('click', customize ? customize : this.defaultAction);
 }
 
+
 onloadAction = function() {
-  document.getElementById('rippleDemoItem').addEventListener('click', createRipple);
-  document.getElementById('rippleOutDemoItem').addEventListener('click', createRippleOut);
+  addDemoEventListener('rippleDemoItem', `${classPrefix}-ripple`, createRipple);
+  addDemoEventListener('rippleOutDemoItem', `${classPrefix}-ripple-out`);
+  addDemoEventListener('bounceRightDemoItem', `${classPrefix}-bounce-to-right`);
+  addDemoEventListener('bounceBottomDemoItem', `${classPrefix}-bounce-to-bottom`);
 }
 
 if(window.attachEvent) {

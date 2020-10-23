@@ -1,7 +1,7 @@
 @import "variables";
 @import "mixins";
 @import "effects/ripple";
-
+@import "effects/background";
 
 .#{$nameSpace}-ripple {
   @include ripple();
@@ -9,4 +9,12 @@
 
 .#{$nameSpace}-ripple-out {
   @include ripple-out();
+}
+
+.#{$nameSpace}-bounce-to-right {
+  @include bounce-to-right();
+}
+
+.#{$nameSpace}-bounce-to-bottom {
+  @include bounce-to-bottom();
 }

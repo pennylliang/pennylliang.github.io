@@ -21,8 +21,7 @@
 }
 
 @mixin ripple-out {
-	$outerBorderWidth: 6px;
-	$innerBorderWidth: 6px;
+	$outerBorderWidth: 12px;
 
 	@include optimize();
 	position: absolute;
