@@ -11,10 +11,22 @@
   @include ripple-out();
 }
 
+.#{$nameSpace}-ripple-heart {
+  @include ripple-heart();
+}
+
 .#{$nameSpace}-bounce-to-right {
   @include bounce-to-right();
 }
 
 .#{$nameSpace}-bounce-to-bottom {
   @include bounce-to-bottom();
+}
+
+.#{$nameSpace}-shutter-out-horizontal {
+  @include shutter-out-horizontal();
+}
+
+.#{$nameSpace}-shutter-out-vertical {
+  @include shutter-out-vertical();
 }

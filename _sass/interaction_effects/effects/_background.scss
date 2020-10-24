@@ -50,3 +50,70 @@
 		@include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
   }
 }
+
+@mixin shutter-out-horizontal {
+	@include optimize();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 1);
+  @include prefixed(transform, scaleX(0));
+  @include prefixed(transform-origin, 50%);
+  @include prefixed(animation-name, #{$nameSpace}-shutter-out-horizontal);
+  @include prefixed(animation-duration, 600ms);
+  @include prefixed(animation-timing-function, ease-out);
+}
+
+@include keyframes(#{$nameSpace}-shutter-out-horizontal) {
+  to {
+    @include prefixed(transform, scaleX(1));
+    @include prefixed(animation-timing-function, linear);
+    opacity: 0;
+  }
+}
+
+@mixin shutter-out-horizontal {
+	@include optimize();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  @include prefixed(transform, scaleX(0));
+  @include prefixed(transform-origin, 50%);
+  @include prefixed(animation-name, #{$nameSpace}-shutter-out-horizontal);
+  @include prefixed(animation-duration, 400ms);
+  @include prefixed(animation-timing-function, ease-out);
+}
+
+@include keyframes(#{$nameSpace}-shutter-out-horizontal) {
+  100% {
+    @include prefixed(transform, scaleX(1));
+    @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+}
+
+@mixin shutter-out-vertical {
+	@include optimize();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  @include prefixed(transform, scaleY(0));
+  @include prefixed(transform-origin, 50%);
+  @include prefixed(animation-name, #{$nameSpace}-shutter-out-vertical);
+  @include prefixed(animation-duration, 400ms);
+  @include prefixed(animation-timing-function, ease-out);
+}
+
+@include keyframes(#{$nameSpace}-shutter-out-vertical) {
+  100% {
+    @include prefixed(transform, scaleY(1));
+    @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
+  }
+}

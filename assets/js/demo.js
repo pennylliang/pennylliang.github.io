@@ -1,7 +1,6 @@
 const classPrefix = 'interE';
 
 function createRipple(event) {
-  console.log(event);
   const button = event.currentTarget;
 
   const circle = document.createElement('span');
@@ -19,6 +18,26 @@ function createRipple(event) {
     ripple.remove();
   }
   button.appendChild(circle);
+}
+
+function createRippleHeart(event) {
+  const button = event.currentTarget;
+
+  const heart = document.createElement('span');
+  //const diameter = Math.max(button.clientWidth, button.clientHeight);
+  //const radius = diameter / 2;
+
+  //circle.style.width = circle.style.height = `${diameter}px`;
+  heart.style.left = `${event.offsetX - 50}px`;
+  heart.style.top = `${event.offsetY - 45}px`;
+  heart.classList.add(`${classPrefix}-ripple-heart`);
+
+  const old = button.getElementsByClassName(`${classPrefix}-ripple-heart`)[0];
+
+  if (old) {
+    old.remove();
+  }
+  button.appendChild(heart);
 }
 
 function addDemoEventListener(boxId, styleName, customize) {
@@ -40,8 +59,11 @@ function addDemoEventListener(boxId, styleName, customize) {
 onloadAction = function() {
   addDemoEventListener('rippleDemoItem', `${classPrefix}-ripple`, createRipple);
   addDemoEventListener('rippleOutDemoItem', `${classPrefix}-ripple-out`);
+  addDemoEventListener('rippleHeartDemoItem', `${classPrefix}-ripple-heart`, createRippleHeart);
   addDemoEventListener('bounceRightDemoItem', `${classPrefix}-bounce-to-right`);
   addDemoEventListener('bounceBottomDemoItem', `${classPrefix}-bounce-to-bottom`);
+  addDemoEventListener('shutterOutHorizontalDemoItem', `${classPrefix}-shutter-out-horizontal`);
+  addDemoEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
 }
 
 if(window.attachEvent) {

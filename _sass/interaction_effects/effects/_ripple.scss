@@ -11,8 +11,6 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-
-
 @include keyframes(#{$nameSpace}-ripple) {
   to {
     transform: scale(4);
@@ -35,7 +33,6 @@
   @include prefixed(animation-duration, 600ms);
 }
 
-
 @include keyframes(#{$nameSpace}-ripple-out) {
 	100% {
 		top: -(6px + 6px);
@@ -44,4 +41,41 @@
 		left: -(6px + 6px);
 		opacity: 0;
 	}
+}
+
+@mixin ripple-heart {
+  @include optimize();
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  &:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  transform: scale(0);
+  @include prefixed(animation-name, #{$nameSpace}-ripple-heart);
+  @include prefixed(animation-duration, 600ms);
+  @include prefixed(animation-timing-function, linear);
+}
+
+@include keyframes(#{$nameSpace}-ripple-heart) {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
