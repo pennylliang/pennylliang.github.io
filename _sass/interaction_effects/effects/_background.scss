@@ -117,3 +117,32 @@
     @include prefixed(animation-timing-function, cubic-bezier(.52,1.64,.37,.66));
   }
 }
+
+@mixin radar {
+  @include optimize();
+  background: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  // animation: 1s linear infinite rotate;
+  position: absolute;
+  transform-origin: 50% 100%;
+  opacity: 0;
+  @include prefixed(animation-name, #{$nameSpace}-radar);
+  @include prefixed(animation-duration, 1s);
+}
+
+@include keyframes(#{$nameSpace}-radar) {
+  0% {
+    transform: rotate(0deg)
+  }
+  1% {
+    opacity: 1
+  }
+  99% {
+    opacity: 1
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+}

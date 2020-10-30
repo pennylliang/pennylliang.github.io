@@ -24,15 +24,33 @@ function createRippleHeart(event) {
   const button = event.currentTarget;
 
   const heart = document.createElement('span');
-  //const diameter = Math.max(button.clientWidth, button.clientHeight);
-  //const radius = diameter / 2;
-
-  //circle.style.width = circle.style.height = `${diameter}px`;
   heart.style.left = `${event.offsetX - 50}px`;
   heart.style.top = `${event.offsetY - 45}px`;
   heart.classList.add(`${classPrefix}-ripple-heart`);
 
   const old = button.getElementsByClassName(`${classPrefix}-ripple-heart`)[0];
+
+  if (old) {
+    old.remove();
+  }
+  button.appendChild(heart);
+}
+
+function createRadar(event) {
+  const button = event.currentTarget;
+
+  const heart = document.createElement('span');
+  const radius = Math.sqrt(Math.pow(button.clientWidth/2, 2) +
+    Math.pow(button.clientHeight/2, 2));
+  heart.style.left = `${(button.clientWidth/2)-radius}px`;
+  heart.style.top = `${(button.clientHeight/2)-radius}px`;
+  heart.style.width = `${radius*2}px`;
+  heart.style.height = `${radius}px`;
+  heart.style.borderTopLeftRadius = `${radius*2}px`;
+  heart.style.borderTopRightRadius = `${radius*2}px`;
+  heart.classList.add(`${classPrefix}-radar`);
+
+  const old = button.getElementsByClassName(`${classPrefix}-radar`)[0];
 
   if (old) {
     old.remove();
@@ -64,6 +82,7 @@ onloadAction = function() {
   addDemoEventListener('bounceBottomDemoItem', `${classPrefix}-bounce-to-bottom`);
   addDemoEventListener('shutterOutHorizontalDemoItem', `${classPrefix}-shutter-out-horizontal`);
   addDemoEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
+  addDemoEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
 }
 
 if(window.attachEvent) {

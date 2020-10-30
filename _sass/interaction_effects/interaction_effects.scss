@@ -30,3 +30,7 @@
 .#{$nameSpace}-shutter-out-vertical {
   @include shutter-out-vertical();
 }
+
+.#{$nameSpace}-radar {
+  @include radar();
+}
