@@ -83,6 +83,7 @@ onloadAction = function() {
   addDemoEventListener('shutterOutHorizontalDemoItem', `${classPrefix}-shutter-out-horizontal`);
   addDemoEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
   addDemoEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
+  addDemoEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
 }
 
 if(window.attachEvent) {

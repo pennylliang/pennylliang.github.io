@@ -2,6 +2,7 @@
 @import "mixins";
 @import "effects/ripple";
 @import "effects/background";
+@import "effects/border";
 
 .#{$nameSpace}-ripple {
   @include ripple();
@@ -33,4 +34,8 @@
 
 .#{$nameSpace}-radar {
   @include radar();
+}
+
+.#{$nameSpace}-loading {
+  @include loading();
 }
