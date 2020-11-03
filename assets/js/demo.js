@@ -70,7 +70,10 @@ function addDemoEventListener(boxId, styleName, customize) {
     }
     event.currentTarget.appendChild(span);
   }
-  document.getElementById(boxId).addEventListener('click', customize ? customize : this.defaultAction);
+  const elm = document.getElementById(boxId);
+  if (elm) {
+    elm.addEventListener('click', customize ? customize : this.defaultAction);
+  }
 }
 
 
@@ -84,6 +87,7 @@ onloadAction = function() {
   addDemoEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
   addDemoEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
   addDemoEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
+  addDemoEventListener('cycleLoading2DemoItem', `${classPrefix}-loading2`);
 }
 
 if(window.attachEvent) {

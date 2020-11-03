@@ -1,3 +1,5 @@
+@import '../variables';
+
 @mixin loading {
   @include optimize();
 
@@ -22,6 +24,39 @@
   }
   99% {
     @include prefixed(transform, rotate(360deg));
+    opacity: 1;
+    // filter:hue-rotate(360deg); color can change
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@mixin loading2 {
+  @include optimize();
+
+  position: absolute;
+  background-clip: content-box;
+  padding: 2.5px;
+  border-radius:50%;
+  border: 2.5px dashed $primaryColor;
+  top:-5px;
+  bottom:-5px;
+  left:-5px;
+  right:-5px;
+  opacity: 0;
+  @include prefixed(transform, rotate(0deg));
+  @include prefixed(animation-name, #{$nameSpace}-loading2);
+  @include prefixed(animation-duration, 700ms);
+  @include prefixed(animation-timing-function, linear);
+}
+
+@include keyframes(#{$nameSpace}-loading2) {
+  1% {
+    opacity: 1;
+  }
+  99% {
+    @include prefixed(transform, rotate(90deg));
     opacity: 1;
     // filter:hue-rotate(360deg); color can change
   }

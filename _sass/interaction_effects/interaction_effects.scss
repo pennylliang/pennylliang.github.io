@@ -39,3 +39,7 @@
 .#{$nameSpace}-loading {
   @include loading();
 }
+
+.#{$nameSpace}-loading2 {
+  @include loading2();
+}
