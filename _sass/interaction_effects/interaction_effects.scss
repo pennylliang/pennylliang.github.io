@@ -43,3 +43,7 @@
 .#{$nameSpace}-loading2 {
   @include loading2();
 }
+
+.#{$nameSpace}-morph {
+  @include morph();
+}

@@ -58,7 +58,8 @@ function createRadar(event) {
   button.appendChild(heart);
 }
 
-function addDemoEventListener(boxId, styleName, customize) {
+
+function addSpanEventListener(boxId, styleName, customize) {
   this.defaultAction = (event) => {
     const span = document.createElement('span');
     span.classList.add(styleName);
@@ -76,18 +77,40 @@ function addDemoEventListener(boxId, styleName, customize) {
   }
 }
 
+function addStyleEventListener(boxId, styleName, ms) {
+  this.defaultAction = (event) => {
+    if (event.currentTarget.classList.contains(styleName)) {
+      event.currentTarget.classList.remove(styleName);
+    }
+    event.currentTarget.classList.add(styleName);
+    event.currentTarget.style.pointerEvents = "none";
+    setTimeout(() => {
+      const element = document.getElementById(boxId);
+      if (element) {
+        element.style.pointerEvents = "";
+        element.classList.remove(styleName);
+      }
+    }, ms ? ms : 600);
+  }
+  const elm = document.getElementById(boxId);
+  if (elm) {
+    elm.addEventListener('click', this.defaultAction);
+  }
+}
+
 
 onloadAction = function() {
-  addDemoEventListener('rippleDemoItem', `${classPrefix}-ripple`, createRipple);
-  addDemoEventListener('rippleOutDemoItem', `${classPrefix}-ripple-out`);
-  addDemoEventListener('rippleHeartDemoItem', `${classPrefix}-ripple-heart`, createRippleHeart);
-  addDemoEventListener('bounceRightDemoItem', `${classPrefix}-bounce-to-right`);
-  addDemoEventListener('bounceBottomDemoItem', `${classPrefix}-bounce-to-bottom`);
-  addDemoEventListener('shutterOutHorizontalDemoItem', `${classPrefix}-shutter-out-horizontal`);
-  addDemoEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
-  addDemoEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
-  addDemoEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
-  addDemoEventListener('cycleLoading2DemoItem', `${classPrefix}-loading2`);
+  addSpanEventListener('rippleDemoItem', `${classPrefix}-ripple`, createRipple);
+  addSpanEventListener('rippleOutDemoItem', `${classPrefix}-ripple-out`);
+  addSpanEventListener('rippleHeartDemoItem', `${classPrefix}-ripple-heart`, createRippleHeart);
+  addSpanEventListener('bounceRightDemoItem', `${classPrefix}-bounce-to-right`);
+  addSpanEventListener('bounceBottomDemoItem', `${classPrefix}-bounce-to-bottom`);
+  addSpanEventListener('shutterOutHorizontalDemoItem', `${classPrefix}-shutter-out-horizontal`);
+  addSpanEventListener('shutterOutVerticalDemoItem', `${classPrefix}-shutter-out-vertical`);
+  addSpanEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
+  addSpanEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
+  addSpanEventListener('cycleLoading2DemoItem', `${classPrefix}-loading2`);
+  addStyleEventListener('morphDemoItem', `${classPrefix}-morph`, 8000);
 }
 
 if(window.attachEvent) {

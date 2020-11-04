@@ -64,3 +64,22 @@
     opacity: 0;
   }
 }
+
+@mixin morph {
+  @include optimize();
+
+  @include prefixed(transform, rotate(0deg));
+  @include prefixed(animation-name, #{$nameSpace}-morph);
+  @include prefixed(animation-duration, 8s);
+  @include prefixed(animation-timing-function, ease-in-out);
+}
+
+@include keyframes(#{$nameSpace}-morph) {
+	50% {
+		border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
+	}
+
+	100% {
+		border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+}
