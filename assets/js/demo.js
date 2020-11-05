@@ -77,17 +77,22 @@ function addSpanEventListener(boxId, styleName, customize) {
   }
 }
 
-function addStyleEventListener(boxId, styleName, ms) {
+function addStyleEventListener(boxId, styleName, ms, disableClickWhenShown) {
   this.defaultAction = (event) => {
     if (event.currentTarget.classList.contains(styleName)) {
       event.currentTarget.classList.remove(styleName);
     }
     event.currentTarget.classList.add(styleName);
-    event.currentTarget.style.pointerEvents = "none";
+    if (disableClickWhenShown) {
+      event.currentTarget.style.pointerEvents = "none";
+    }
+
     setTimeout(() => {
       const element = document.getElementById(boxId);
       if (element) {
-        element.style.pointerEvents = "";
+        if (disableClickWhenShown) {
+          element.style.pointerEvents = "";
+        }
         element.classList.remove(styleName);
       }
     }, ms ? ms : 600);
@@ -110,7 +115,7 @@ onloadAction = function() {
   addSpanEventListener('radarDemoItem', `${classPrefix}-radar`, createRadar);
   addSpanEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
   addSpanEventListener('cycleLoading2DemoItem', `${classPrefix}-loading2`);
-  addStyleEventListener('morphDemoItem', `${classPrefix}-morph`, 8000);
+  addStyleEventListener('morphDemoItem', `${classPrefix}-morph`, 8000, true);
 }
 
 if(window.attachEvent) {

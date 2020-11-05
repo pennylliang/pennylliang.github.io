@@ -157,23 +157,33 @@ body {
 }
 
 .cycle-box {
-  cursor: pointer;
-  position: relative;
-  margin: 1rem;
-  font-size: .75rem;
-  line-height: 1.428571;
-  text-decoration: none;
-  border: 0;
-  border-radius: .2rem;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
-  background-color: $brand-primary;
-  color: $white-color;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   line-height: 4.5rem;
-  vertical-align: middle;
+}
+
+.square-box {
+  width: 5rem;
+  height: 5rem;
+  line-height: 4.5rem;
+}
+
+// special styles
+.shine-main-content {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  height: 94%;
+  width: 93%;
+  align-self: center;
+  z-index: 3;
+  background:$white-color;
+}
+
+.shine-wrapper {
+  box-shadow: none;
+  color:black;
+  overflow:hidden;
+  background-color: $white-color;
 }

@@ -47,3 +47,7 @@
 .#{$nameSpace}-morph {
   @include morph();
 }
+
+.#{$nameSpace}-shine {
+  @include shine();
+}

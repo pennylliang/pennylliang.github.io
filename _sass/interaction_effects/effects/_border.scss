@@ -83,3 +83,27 @@
 		border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
 	}
 }
+
+@mixin shine {
+  @include optimize();
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: 2;
+  height: 200%;
+  width: 200%;
+  background: linear-gradient(to right, #fff 20%, #fff 40%, #ECD08C 50%, #ECD08C 55%, #fff 70%, #fff 100%);
+  background-size: 200% auto;
+
+  @include prefixed(transform, rotate(-45deg));
+  @include prefixed(animation-name, #{$nameSpace}-shine);
+  @include prefixed(animation-duration, 2s);
+  @include prefixed(animation-timing-function, linear);
+  @include prefixed(animation-iteration-count, infinite);
+}
+
+@include keyframes(#{$nameSpace}-shine) {
+	to {
+		background-position: 200% center;
+	}
+}
