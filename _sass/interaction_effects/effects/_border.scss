@@ -184,3 +184,79 @@ $path-width: 2px;
     clip-path: inset( 0 0 0 calc(100% - #{$path-width}))
   }
 }
+
+@mixin psycho {
+  @include optimize();
+  @include prefixed(animation-name, #{$nameSpace}-psycho);
+  @include prefixed(animation-duration, 2s);
+}
+
+@include keyframes(#{$nameSpace}-psycho) {
+  0% {
+    @include prefixed(transform, rotate(0deg) scale(1) translate(0, 0));
+  }
+
+  33% {
+    @include prefixed(transform, rotate(360deg) scale(1) translate(5px, 5px));
+  }
+
+  66% {
+    @include prefixed(transform, rotate(720deg) scale(1) translate(-5px, -5px));
+  }
+
+  100% {
+    @include prefixed(transform, rotate(1080deg) scale(1) translate(0, 0));
+  }
+}
+
+@mixin corner {
+  @include optimize();
+  @include prefixed(animation-name, #{$nameSpace}-corner);
+  @include prefixed(animation-duration, 3s);
+}
+
+$s: 100% / 8;
+$t: 0.001%;
+
+@include keyframes(#{$nameSpace}-corner) {
+  #{$s * 0} {
+    border-top-left-radius: 1% 50%;
+  }
+  #{$s * 1} {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+  #{$s * 2} {
+    border-top-right-radius: 1% 50%;
+  }
+  #{$s * 2 + $t} {
+    border-top-right-radius: 50% 1%;
+  }
+  #{$s * 3} {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #{$s * 4} {
+    border-bottom-right-radius: 50% 1%;
+  }
+  #{$s * 4 + $t} {
+    border-bottom-right-radius: 1% 50%;
+  }
+  #{$s * 5} {
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+  #{$s * 6} {
+    border-bottom-left-radius: 1% 50%;
+  }
+  #{$s * 6 + $t} {
+    border-bottom-left-radius: 50% 1%;
+  }
+  #{$s * 7} {
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+  }
+  #{$s * 8} {
+    border-top-left-radius: 50% 1%;
+  }
+}

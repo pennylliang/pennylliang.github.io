@@ -153,6 +153,8 @@ onloadAction = function() {
   addStyleEventListener('morphDemoItem', `${classPrefix}-morph`, 8000, true);
   addSpanEventListener('slideDemoItem', '', createBorderSlide);
   addSpanEventListener('clipDemoItem', `${classPrefix}-clip`);
+  addStyleEventListener('psychoDemoItem', `${classPrefix}-psycho`, 2000, true);
+  addStyleEventListener('cornerDemoItem', `${classPrefix}-corner`, 3000, true);
 }
 
 if(window.attachEvent) {

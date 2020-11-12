@@ -68,3 +68,11 @@
 .#{$nameSpace}-clip {
   @include clip();
 }
+
+.#{$nameSpace}-psycho {
+  @include psycho();
+}
+
+.#{$nameSpace}-corner {
+  @include corner();
+}
