@@ -51,3 +51,20 @@
 .#{$nameSpace}-shine {
   @include shine();
 }
+
+.#{$nameSpace}-slide-top {
+  @include slide(up, 4px);
+}
+.#{$nameSpace}-slide-right {
+  @include slide(right, 4px);
+}
+.#{$nameSpace}-slide-bottom {
+  @include slide(down, 4px);
+}
+.#{$nameSpace}-slide-left {
+  @include slide(left, 4px);
+}
+
+.#{$nameSpace}-clip {
+  @include clip();
+}

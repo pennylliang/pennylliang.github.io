@@ -58,9 +58,44 @@ function createRadar(event) {
   button.appendChild(heart);
 }
 
+function createBorderSlide(event) {
+  const button = event.currentTarget;
+
+  const top = document.createElement('span');
+  const right = document.createElement('span');
+  const bottom = document.createElement('span');
+  const left = document.createElement('span');
+
+  top.classList.add(`${classPrefix}-slide-top`);
+  right.classList.add(`${classPrefix}-slide-right`);
+  bottom.classList.add(`${classPrefix}-slide-bottom`);
+  left.classList.add(`${classPrefix}-slide-left`);
+
+  const oldtop = button.getElementsByClassName(`${classPrefix}-slide-top`)[0];
+  const oldright = button.getElementsByClassName(`${classPrefix}-slide-right`)[0];
+  const oldbottom = button.getElementsByClassName(`${classPrefix}-slide-bottom`)[0];
+  const oldleft = button.getElementsByClassName(`${classPrefix}-slide-left`)[0];
+
+  if (oldtop) {
+    oldtop.remove();
+  }
+  if (oldright) {
+    oldright.remove();
+  }
+  if (oldbottom) {
+    oldbottom.remove();
+  }
+  if (oldleft) {
+    oldleft.remove();
+  }
+  button.appendChild(top);
+  button.appendChild(right);
+  button.appendChild(bottom);
+  button.appendChild(left);
+}
 
 function addSpanEventListener(boxId, styleName, customize) {
-  this.defaultAction = (event) => {
+  var defaultAction = (event) => {
     const span = document.createElement('span');
     span.classList.add(styleName);
 
@@ -73,12 +108,12 @@ function addSpanEventListener(boxId, styleName, customize) {
   }
   const elm = document.getElementById(boxId);
   if (elm) {
-    elm.addEventListener('click', customize ? customize : this.defaultAction);
+    elm.addEventListener('click', customize ? customize : defaultAction);
   }
 }
 
 function addStyleEventListener(boxId, styleName, ms, disableClickWhenShown) {
-  this.defaultAction = (event) => {
+  var defaultAction = (event) => {
     if (event.currentTarget.classList.contains(styleName)) {
       event.currentTarget.classList.remove(styleName);
     }
@@ -99,7 +134,7 @@ function addStyleEventListener(boxId, styleName, ms, disableClickWhenShown) {
   }
   const elm = document.getElementById(boxId);
   if (elm) {
-    elm.addEventListener('click', this.defaultAction);
+    elm.addEventListener('click', defaultAction);
   }
 }
 
@@ -116,6 +151,8 @@ onloadAction = function() {
   addSpanEventListener('cycleLoadingDemoItem', `${classPrefix}-loading`);
   addSpanEventListener('cycleLoading2DemoItem', `${classPrefix}-loading2`);
   addStyleEventListener('morphDemoItem', `${classPrefix}-morph`, 8000, true);
+  addSpanEventListener('slideDemoItem', '', createBorderSlide);
+  addSpanEventListener('clipDemoItem', `${classPrefix}-clip`);
 }
 
 if(window.attachEvent) {
