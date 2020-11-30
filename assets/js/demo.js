@@ -58,6 +58,27 @@ function createRadar(event) {
   button.appendChild(heart);
 }
 
+function createBubble(event) {
+  const button = event.currentTarget;
+  const left = document.createElement('span');
+  const right = document.createElement('span');
+
+  left.classList.add(`${classPrefix}-bubble-left`);
+  right.classList.add(`${classPrefix}-bubble-right`);
+
+  const oldLeft = button.getElementsByClassName(`${classPrefix}-bubble-left`)[0];
+  const oldRight = button.getElementsByClassName(`${classPrefix}-bubble-right`)[0];
+
+  if (oldLeft) {
+    oldLeft.remove();
+  }
+  if (oldRight) {
+    oldRight.remove();
+  }
+  button.appendChild(left);
+  button.appendChild(right);
+}
+
 function createBorderSlide(event) {
   const button = event.currentTarget;
 
@@ -155,6 +176,7 @@ onloadAction = function() {
   addSpanEventListener('clipDemoItem', `${classPrefix}-clip`);
   addStyleEventListener('psychoDemoItem', `${classPrefix}-psycho`, 2000, true);
   addStyleEventListener('cornerDemoItem', `${classPrefix}-corner`, 3000, true);
+  addSpanEventListener('bubbleDemoItem', '', createBubble);
 }
 
 if(window.attachEvent) {

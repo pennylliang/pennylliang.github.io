@@ -76,3 +76,11 @@
 .#{$nameSpace}-corner {
   @include corner();
 }
+
+.#{$nameSpace}-bubble-left {
+  @include bubble(25px, -40px, left);
+}
+
+.#{$nameSpace}-bubble-right {
+  @include bubble(25px, 40px, right);
+}

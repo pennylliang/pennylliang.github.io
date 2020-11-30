@@ -260,3 +260,43 @@ $t: 0.001%;
     border-top-left-radius: 50% 1%;
   }
 }
+
+@mixin bubble-body($size, $direct) {
+  @include optimize();
+  position: absolute;
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+  top: calc(50% - #{$size}*0.5);
+  @if $direct == left {
+    left: 0;
+  } @else {
+    right: 0;
+  }
+  background-color: $primaryColor;
+  opacity: 0;
+  @include prefixed(animation-name, #{$nameSpace}-bubble-#{$direct});
+  @include prefixed(animation-duration, 1s);
+  @include prefixed(animation-timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+@mixin bubble($size, $distance, $direct) {
+
+  @include bubble-body($size, $direct);
+  @include keyframes(#{$nameSpace}-bubble-#{$direct}) {
+    5% {
+      width: calc(#{$size}*1.5);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    99% {
+      width: $size;
+    }
+    100% {
+      @include prefixed(transform, translate3d($distance, 0, 0));
+      opacity: 0;
+    }
+  }
+}
