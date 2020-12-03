@@ -84,3 +84,19 @@
 .#{$nameSpace}-bubble-right {
   @include bubble(25px, 40px, right);
 }
+
+.#{$nameSpace}-draw-body-left {
+  @include draw-body(left);
+}
+
+.#{$nameSpace}-draw-body-right {
+  @include draw-body(right);
+}
+
+.#{$nameSpace}-draw-left {
+  @include draw(left);
+}
+
+.#{$nameSpace}-draw-right {
+  @include draw(right);
+}

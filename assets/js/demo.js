@@ -79,6 +79,32 @@ function createBubble(event) {
   button.appendChild(right);
 }
 
+function createDraw(event) {
+  const button = event.currentTarget;
+
+  const left = button.getElementsByClassName(`${classPrefix}-draw-body-left`)[0];
+  const right = button.getElementsByClassName(`${classPrefix}-draw-body-right`)[0];
+  if (left.classList.contains(`${classPrefix}-draw-left`)) {
+    left.classList.remove(`${classPrefix}-draw-left`);
+  }
+  if (right.classList.contains(`${classPrefix}-draw-right`)) {
+    right.classList.remove(`${classPrefix}-draw-right`);
+  }
+  left.classList.add(`${classPrefix}-draw-left`);
+  right.classList.add(`${classPrefix}-draw-right`);
+
+  setTimeout(() => {
+    const left = document.getElementsByClassName(`${classPrefix}-draw-left`)[0];
+    const right = document.getElementsByClassName(`${classPrefix}-draw-right`)[0];
+    if (left) {
+      left.classList.remove(`${classPrefix}-draw-left`);
+    }
+    if (right) {
+      right.classList.remove(`${classPrefix}-draw-right`)
+    }
+  }, 1000);
+}
+
 function createBorderSlide(event) {
   const button = event.currentTarget;
 
@@ -177,6 +203,7 @@ onloadAction = function() {
   addStyleEventListener('psychoDemoItem', `${classPrefix}-psycho`, 2000, true);
   addStyleEventListener('cornerDemoItem', `${classPrefix}-corner`, 3000, true);
   addSpanEventListener('bubbleDemoItem', '', createBubble);
+  addSpanEventListener('drawDemoItem', '', createDraw);
 }
 
 if(window.attachEvent) {
